@@ -4,7 +4,7 @@ set(PROJECT algo_tests)
 project(${PROJECT})
 
 set(CMAKE_CXX_STANDARD 17)
-set(HEADERS test.h ../src/data.h)
+set(HEADERS ../src/data.h)
 set(SOURCES test.cpp main.cpp ../src/data.cpp)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
