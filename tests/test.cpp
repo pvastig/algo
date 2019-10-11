@@ -2,61 +2,21 @@
 
 #include "../src/data.h"
 
-#include <cassert>
-#include <iostream>
+#include <gtest/gtest.h>
 
-void Test::braces() {
-  using namespace Algo;
-  {
-    std::string str = "]]]";
-    assert(checkBraces(str) == 1);
-  }
-  {
-    std::string str = "{";
-    assert(checkBraces(str) == 1);
-  }
-  {
-    std::string str = "][";
-    assert(checkBraces(str) == 1);
-  }
-  {
-    std::string str = "()";
-    assert(checkBraces(str) == 0);
-  }
-  {
-    std::string str = "(abc";
-    assert(checkBraces(str) == 1);
-  }
-  {
-    std::string str = "[(a)]";
-    assert(checkBraces(str) == 0);
-  }
-  {
-    std::string str = "[(a)](((()))";
-    assert(checkBraces(str) == 6);
-  }
-  {
-    std::string str = "()[]}";
-    assert(checkBraces(str) == 5);
-  }
-  {
-    std::string str = "()()([}";
-    assert(checkBraces(str) == 7);
-  }
-  {
-    std::string str = "{{[()]]";
-    assert(checkBraces(str) == 7);
-  }
-  {
-    std::string str = "[]([]";
-    assert(checkBraces(str) == 3);
-  }
-  {
-    std::string str = "([)]";
-    assert(checkBraces(str) == 3);
-  }
-  {
-    std::string str = "(slkj{lk[lsj]}";
-    assert(checkBraces(str) == 1);
-  }
+TEST(CheckBraces, PositionResulut) {
+  ASSERT_EQ(Algo::checkBraces("]]]"), 1);
+  ASSERT_EQ(Algo::checkBraces("{"), 1);
+  ASSERT_EQ(Algo::checkBraces("]["), 1);
+  ASSERT_EQ(Algo::checkBraces("()"), 0);
+  ASSERT_EQ(Algo::checkBraces("(abc"), 1);
+  ASSERT_EQ(Algo::checkBraces("(a(bc"), 3);
+  ASSERT_EQ(Algo::checkBraces("[(a)]"), 0);
+  ASSERT_EQ(Algo::checkBraces("[(a)](((()))"), 6);
+  ASSERT_EQ(Algo::checkBraces("()[]}"), 5);
+  ASSERT_EQ(Algo::checkBraces("()()([}"), 7);
+  ASSERT_EQ(Algo::checkBraces("{{[()]]"), 7);
+  ASSERT_EQ(Algo::checkBraces("[]([]"), 3);
+  ASSERT_EQ(Algo::checkBraces("([)]"), 3);
+  ASSERT_EQ(Algo::checkBraces("(slkj{lk[lsj]}"), 1);
 }
