@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(CheckBraces, PositionResulut) {
+TEST(CheckBraces, PositionResult) {
   using namespace Algo;
   ASSERT_EQ(checkBraces("]]]"), 1);
   ASSERT_EQ(checkBraces("{"), 1);
