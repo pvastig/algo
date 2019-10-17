@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stack>
 #include <string>
 
 namespace Algo {
@@ -10,5 +11,18 @@ namespace Algo {
  */
 size_t checkBraces(std::string const& str);
 
-int findMax()
+class FindMax {
+ public:
+  FindMax();
+  void push(int value);
+  void pop();
+  int max() const;
+
+ private:
+  std::stack<int> m_values;
+  std::stack<int> m_maxValues;
+};
+
+std::string query(std::string const& str, FindMax& s);
+
 }  // namespace Algo

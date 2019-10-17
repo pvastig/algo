@@ -1,10 +1,9 @@
 #include "algo_stack.h"
 
+#include <algorithm>
 #include <cassert>
-#include <iostream>
-#include <stack>
+#include <sstream>
 
-using namespace std;
 namespace Algo {
 size_t checkBraces(std::string const &str) {
   struct BracePos {
@@ -30,5 +29,49 @@ size_t checkBraces(std::string const &str) {
   }
 
   return openedBraces.empty() ? 0 : openedBraces.top().pos;
+}
+
+FindMax::FindMax() = default;
+
+void FindMax::push(int value) {
+  m_values.push(value);
+  if (m_maxValues.empty())
+    m_maxValues.push(value);
+  else {
+    auto top = m_maxValues.top();
+    if (value > top)
+      m_maxValues.push(value);
+    else
+      m_maxValues.push(top);
+  }
+}
+
+void FindMax::pop() {
+  m_values.pop();
+  m_maxValues.pop();
+}
+
+int FindMax::max() const {
+  if (!m_maxValues.empty())
+    return m_maxValues.top();
+  return 0;
+}
+
+std::string query(std::string const &str, FindMax &s) {
+  if (str == "max")
+    return std::to_string(s.max());
+  if (str == "pop") {
+    s.pop();
+    return "";
+  }
+  if (str.find_first_of("push") != std::string::npos) {
+    std::stringstream is(str);
+    std::string op;
+    is >> op;
+    int value = 0;
+    is >> value;
+    s.push(value);
+  }
+  return "";
 }
 }  // namespace Algo
