@@ -1,4 +1,5 @@
 #include "../src/algo_stack.h"
+#include "../src/algo_tree.h"
 
 #include <gtest/gtest.h>
 
@@ -74,9 +75,8 @@ TEST(Stack, MaxResult) {
   }
 }
 
-/*TEST(FindHeightTree, Height) {
+TEST(Tree, FindHeightTree) {
   using namespace Algo;
-  int a[]    = {9, 7, 5, 5, 2, 9, 9, 9, 2, -1};
-  auto index = getHeight(a, 10);
-  ASSERT_TRUE(index == 9);
-}*/
+  ASSERT_EQ(old::getHeight({9, 7, 5, 5, 2, 9, 9, 9, 2, -1}), 4);
+  ASSERT_EQ(getHeight({9, 7, 5, 5, 2, 9, 9, 9, 2, -1}), 4);
+}

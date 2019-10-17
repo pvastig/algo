@@ -5,7 +5,7 @@
 
 namespace Algo {
 /*
- * The metod finds not closed or opened brace in the string
+ * The method finds not closed or opened brace in the string
  * param str input string
  * return position of not closed or opened brace
  */
