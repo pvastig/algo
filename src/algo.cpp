@@ -97,17 +97,17 @@ void removeValue(std::vector<int>& v) {
 
 std::vector<int> mergeArrays(const std::vector<std::vector<int> >& v) {
   size_t elements = 0;
-  for (auto const item : v)
+  for (auto const& item : v)
     elements += item.size();
   std::vector<int> result;
   std::vector<int> res;
-  std::vector<int> index(v.size(), 0);
-  for (int j = 0; j < elements; ++j) {
+  std::vector<size_t> index(v.size(), 0);
+  for (size_t j = 0; j < elements; ++j) {
     bool minValueFound = false;
     int foundIndex     = -1;
     auto& first        = v[0];
     int minValue       = first[index[0]];
-    for (int i = 0; i < 4; ++i) {
+    for (size_t i = 0; i < v.size(); ++i) {
       if (index[i] >= v[i].size())
         continue;
       auto& vec = v[i];
@@ -125,15 +125,13 @@ std::vector<int> mergeArrays(const std::vector<std::vector<int> >& v) {
       auto& vec = *v.begin();
       minValue  = vec[index[0]];
       ++index[0];
-      result.push_back(minValue);
     } else if (foundIndex >= 0) {
       auto& vec = v[foundIndex];
       minValue  = vec[index[foundIndex]];
       ++index[foundIndex];
-      result.push_back(minValue);
     }
     std::cout << "minValue = " << minValue << "\n";
-    // result.push_back(minValue);
+    result.push_back(minValue);
   }
 }
 
