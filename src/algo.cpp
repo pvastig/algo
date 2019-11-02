@@ -68,4 +68,73 @@ bool checkAnnagrams(const std::string& str) {
   return true;
 }
 
+void removeValue(std::vector<int>& v) {
+  auto it = v.begin();
+  auto n  = v.begin();
+  for (; n != v.end(); ++n)
+    if (*n != 0)
+      break;
+
+  if (n != v.end()) {
+  }
+
+  for (; it != v.end(); ++it) {
+    if (*it == 0) {
+      std::swap(*it, *n);
+      while (n != v.end() && *n == 0) {
+        n++;
+      }
+    }
+  }
+
+  for (auto it = v.begin(); it != v.end();) {
+    if (*it == 0)
+      it = v.erase(it++);
+    else
+      ++it;
+  }
+}
+
+std::vector<int> mergeArrays(const std::vector<std::vector<int> >& v) {
+  size_t elements = 0;
+  for (auto const item : v)
+    elements += item.size();
+  std::vector<int> result;
+  std::vector<int> res;
+  std::vector<int> index(v.size(), 0);
+  for (int j = 0; j < elements; ++j) {
+    bool minValueFound = false;
+    int foundIndex     = -1;
+    auto& first        = v[0];
+    int minValue       = first[index[0]];
+    for (int i = 0; i < 4; ++i) {
+      if (index[i] >= v[i].size())
+        continue;
+      auto& vec = v[i];
+      std::cout << "first: " << vec[index[i]] << "\n";
+      if (vec[index[i]] < minValue) {
+        minValue      = vec[index[i]];
+        minValueFound = true;
+        foundIndex    = i;
+      }
+    }
+    if (index[0] >= v[0].size())
+      continue;
+
+    if (foundIndex < 0) {
+      auto& vec = *v.begin();
+      minValue  = vec[index[0]];
+      ++index[0];
+      result.push_back(minValue);
+    } else if (foundIndex >= 0) {
+      auto& vec = v[foundIndex];
+      minValue  = vec[index[foundIndex]];
+      ++index[foundIndex];
+      result.push_back(minValue);
+    }
+    std::cout << "minValue = " << minValue << "\n";
+    // result.push_back(minValue);
+  }
+}
+
 }  // namespace Algo

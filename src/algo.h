@@ -13,4 +13,8 @@ void deleteDublicates(std::vector<int> const& v);
 std::string generateBraces(int pairs, char openedBr = '(', char closedBr = ')');
 
 bool checkAnnagrams(std::string const& s);
+
+void removeValue(std::vector<int>& v);
+
+std::vector<int> mergeArrays(std::vector<std::vector<int>> const& v);
 }  // namespace Algo
