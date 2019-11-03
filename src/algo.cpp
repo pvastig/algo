@@ -6,15 +6,15 @@
 
 namespace Algo {
 
-int countMatchedSymbols(std::string const& j, std::string const& s) {
+int countMatchedSymbols(std::string const& str, std::string const& pattern) {
   int countChar[255] = {};
-  for (auto const ch : j) {
+  for (auto const ch : pattern) {
     int charCode = static_cast<int>(ch);
     if (!countChar[charCode])
       ++countChar[static_cast<int>(ch)];
   }
   int result = 0;
-  for (auto const ch : s)
+  for (auto const ch : str)
     result += countChar[static_cast<int>(ch)];
   return result;
 }
@@ -60,7 +60,7 @@ std::string generateBraces(int pairs, char openedBr, char closedBr) {
   generate("", 0, 0, pairs);
 }
 
-bool checkAnnagrams(const std::string& str) {
+bool checkAnagrams(const std::string& str) {
   std::set<char> s;
   for (auto const ch : str)
     if (bool notInserted = !s.insert(ch).second)

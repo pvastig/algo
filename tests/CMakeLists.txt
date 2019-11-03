@@ -4,8 +4,8 @@ set(PROJECT algo_tests)
 project(${PROJECT})
 
 set(CMAKE_CXX_STANDARD 17)
-set(HEADERS ../src/algo_stack.h ../src/algo_tree.h)
-set(SOURCES test.cpp main.cpp ../src/algo_stack.cpp ../src/algo_tree.cpp)
+set(HEADERS ../src/algo_stack.h ../src/algo_tree.h ../src/algo.h)
+set(SOURCES algo_test.cpp test.cpp main.cpp ../src/algo_stack.cpp ../src/algo_tree.cpp ../src/algo.cpp)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 find_package(Threads REQUIRED)

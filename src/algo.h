@@ -1,8 +1,9 @@
 /*!
-\file
-\brief The file contains different algorithms from sources
-
-Contains real task from interview, books, exclusively for self-study
+ \file
+ \authors Astigeevich Pavel
+ \warning Uses only for studying
+ \brief The file contains different algorithms. Algorithms are taken from real
+task, from interview, books, exclusively for self-study
 */
 
 #pragma once
@@ -29,47 +30,39 @@ int countMatchedSymbols(std::string const& str, std::string const& pattern);
 int countOnes(std::vector<int> const& v);
 
 /*!
- \brief
-
- \fn deleteDublicates
- \param v
+ \brief Deletes duplicates in array
+ \param v Array of integer numbers
+ \todo make template function based on the one
 */
 void deleteDublicates(std::vector<int> const& v);
 
 /*!
- \brief
-
- \fn generateBraces
- \param pairs
- \param openedBr
- \param closedBr
- \return std::string
+ \brief Generates different sequence of braces
+ \param pairs Count of braces
+ \param openedBr Opened brace
+ \param closedBr Closed brace
+ \return Generated sequence of string braces
+ \todo take out the fun in class?
 */
 std::string generateBraces(int pairs, char openedBr = '(', char closedBr = ')');
 
 /*!
- \brief
-
- \fn checkAnnagrams
- \param s
- \return bool
+ \brief Checks that the string is anagrams
+ \param str Checking string
+ \return true if string is anagrams else false
 */
-bool checkAnnagrams(std::string const& s);
+bool checkAnagrams(std::string const& str);
 
 /*!
- \brief
-
- \fn removeValue
- \param v
+ \brief Removes value from from the given array
+ \param v Given array
 */
 void removeValue(std::vector<int>& v);
 
 /*!
- \brief
-
- \fn mergeArrays
- \param v
- \return std::vector<int>
+ \brief Merges sorted arrays into one
+ \param v Array of sorted arrays
+ \return Merged array
 */
 std::vector<int> mergeArrays(std::vector<std::vector<int>> const& v);
 }  // namespace Algo
