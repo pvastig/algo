@@ -6,7 +6,7 @@
 
 namespace Algo {
 
-int seachSubStr(std::string const& j, std::string const& s) {
+int countMatchedSymbols(std::string const& j, std::string const& s) {
   int countChar[255] = {};
   for (auto const ch : j) {
     int charCode = static_cast<int>(ch);
