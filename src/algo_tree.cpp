@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stack>
 
+#include <vector>
 namespace Algo {
 
 void printIndex(int value, std::vector<int> const &v) {
