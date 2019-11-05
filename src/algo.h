@@ -22,23 +22,25 @@ namespace Algo {
 int countMatchedSymbols(std::string const& str, std::string const& pattern);
 
 /*!
- \brief Count ones in the set 0 and 1
- \details for example: for set {101010} the function returns 3
- \param v Input array of 0 and 1
- \return Count of ones in input array
+ \brief Counts one by one digit in the given array
+ \details for example: for set {101010} and value 1 the function returns 1
+ \details {111551} and value 5 returns 2
+ \param v Array of 0 and 1
+ \param value Value that are going to be counted, by default 1
+ \return Count of valued digit
 */
-int countOnes(std::vector<int> const& v);
+int countOnes(std::vector<int> const& v, int value = 1);
 
 /*!
  \brief Deletes duplicates in array
  \param v Array of integer numbers
  \todo make template function based on the one
 */
-void deleteDublicates(std::vector<int> const& v);
+void deleteDublicates(std::vector<int>& v);
 
 /*!
  \brief Generates different sequence of braces
- \param pairs Count of braces
+ \param pairs Count of pair braces
  \param openedBr Opened brace
  \param closedBr Closed brace
  \return Generated sequence of string braces
@@ -47,9 +49,9 @@ void deleteDublicates(std::vector<int> const& v);
 std::string generateBraces(int pairs, char openedBr = '(', char closedBr = ')');
 
 /*!
- \brief Checks that the string is anagrams
+ \brief Checks the given string is anagrams
  \param str Checking string
- \return true if string is anagrams else false
+ \return True if string is anagrams, else false
 */
 bool checkAnagrams(std::string const& str);
 

@@ -19,11 +19,11 @@ int countMatchedSymbols(std::string const& str, std::string const& pattern) {
   return result;
 }
 
-int countOnes(std::vector<int> const& v) {
+int countOnes(std::vector<int> const& v, int value) {
   int countMax = 0;
   int countOne = 0;
   for (auto const item : v) {
-    if (item == 1)
+    if (item == value)
       ++countOne;
     else {
       countMax = std::max(countMax, countOne);
@@ -33,15 +33,29 @@ int countOnes(std::vector<int> const& v) {
   return std::max(countMax, countOne);
 }
 
-void deleteDublicates(const std::vector<int>& v) {
-  if (v.empty())
+void deleteDublicates(std::vector<int>& v) {
+  auto it   = v.begin();
+  auto next = v.begin();
+  for (; next != v.end(); ++next)
+    if (*next != 0)
+      break;
+
+  if (next == v.end())
     return;
-  std::cout << *v.begin() << '\n';
-  int value = *v.begin();
-  for (auto it = std::next(v.begin()); it != v.end(); ++it) {
-    if (value != *it)
-      std::cout << *it << '\n';
-    value = *it;
+
+  for (; it != v.end(); ++it) {
+    if (*it == 0) {
+      std::swap(*it, *next);
+      while (next != v.end() && *next == 0)
+        ++next;
+    }
+  }
+
+  for (auto it = v.begin(); it != v.end();) {
+    if (*it == 0)
+      it = v.erase(it++);
+    else
+      ++it;
   }
 }
 
@@ -54,10 +68,11 @@ std::string generate(std::string s, int l, int r, int pairs) {
     if (r < l)
       generate(s + ')', l, r + 1, pairs);
   }
+  return s;
 }
 
 std::string generateBraces(int pairs, char openedBr, char closedBr) {
-  generate("", 0, 0, pairs);
+  return generate("", 0, 0, pairs);
 }
 
 bool checkAnagrams(const std::string& str) {
