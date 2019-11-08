@@ -32,11 +32,12 @@ int countMatchedSymbols(std::string const& str, std::string const& pattern);
 int countOnes(std::vector<int> const& v, int value = 1);
 
 /*!
- \brief Deletes duplicates in array
- \param v Array of integer numbers
+ \brief Deletes wanted value in array
+ \param v Input array
+ \param value Deleting value from the array
  \todo make template function based on the one
 */
-void deleteDublicates(std::vector<int>& v);
+bool deleteValues(std::vector<int>& v, int value = 0);
 
 /*!
  \brief Generates different sequence of braces
@@ -54,12 +55,6 @@ std::string generateBraces(int pairs, char openedBr = '(', char closedBr = ')');
  \return True if string is anagrams, else false
 */
 bool checkAnagrams(std::string const& str);
-
-/*!
- \brief Removes value from from the given array
- \param v Given array
-*/
-void removeValue(std::vector<int>& v);
 
 /*!
  \brief Merges sorted arrays into one

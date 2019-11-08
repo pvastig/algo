@@ -1,6 +1,6 @@
 #include "algo.h"
 
-#include <algorithm>
+#include <cassert>
 #include <iostream>
 #include <set>
 
@@ -32,31 +32,25 @@ int countOnes(std::vector<int> const& v, int value) {
   }
   return std::max(countMax, countOne);
 }
-
-void deleteDublicates(std::vector<int>& v) {
-  auto it   = v.begin();
-  auto next = v.begin();
-  for (; next != v.end(); ++next)
-    if (*next != 0)
+bool deleteValues(std::vector<int>& v, int value) {
+  size_t const beforeDeleting = v.size();
+  auto n                = v.begin();
+  for (; n != v.end(); ++n) {
+    if (*n == value)
       break;
-
-  if (next == v.end())
-    return;
-
-  for (; it != v.end(); ++it) {
-    if (*it == 0) {
-      std::swap(*it, *next);
-      while (next != v.end() && *next == 0)
-        ++next;
-    }
   }
 
-  for (auto it = v.begin(); it != v.end();) {
-    if (*it == 0)
-      it = v.erase(it++);
-    else
-      ++it;
+  if (n == v.end())
+    return false;
+
+  for (auto it = n; ++it != v.end();) {
+    if (!(*it == value))
+      *n++ = std::move(*it);
   }
+  assert(n != v.end());
+  v.erase(n, v.end());
+  size_t const afterDeleting = v.size();
+  return beforeDeleting != afterDeleting;
 }
 
 std::string generate(std::string s, int l, int r, int pairs) {
@@ -81,33 +75,6 @@ bool checkAnagrams(const std::string& str) {
     if (bool notInserted = !s.insert(ch).second)
       return false;
   return true;
-}
-
-void removeValue(std::vector<int>& v) {
-  auto it = v.begin();
-  auto n  = v.begin();
-  for (; n != v.end(); ++n)
-    if (*n != 0)
-      break;
-
-  if (n != v.end()) {
-  }
-
-  for (; it != v.end(); ++it) {
-    if (*it == 0) {
-      std::swap(*it, *n);
-      while (n != v.end() && *n == 0) {
-        n++;
-      }
-    }
-  }
-
-  for (auto it = v.begin(); it != v.end();) {
-    if (*it == 0)
-      it = v.erase(it++);
-    else
-      ++it;
-  }
 }
 
 std::vector<int> mergeArrays(const std::vector<std::vector<int> >& v) {
