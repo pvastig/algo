@@ -62,4 +62,6 @@ bool checkAnagrams(std::string const& str);
  \return Merged array
 */
 std::vector<int> mergeArrays(std::vector<std::vector<int>> const& v);
+
+std::string alignString(std::vector<std::string> const& words, size_t length);
 }  // namespace Algo

@@ -87,3 +87,16 @@ TEST(Algo, deleteValues) {
     ASSERT_EQ(v.empty(), true) << "Unequal length";
   }
 }
+TEST(Algo, AlignString) {
+  using namespace Algo;
+  ASSERT_EQ("", alignString({}, 3));
+  ASSERT_EQ("", alignString({"1"}, 0));
+  ASSERT_EQ("x", alignString({"x"}, 1));
+  ASSERT_EQ("xy", alignString({"x", "y"}, 2));
+  ASSERT_EQ("", alignString({"x", "y"}, 1));
+  ASSERT_EQ("x y", alignString({"x", "y"}, 3));
+  ASSERT_EQ("a b c", alignString({"a", "b", "c"}, 5));
+  ASSERT_EQ("a   b  c", alignString({"a", "b", "c"}, 8));
+  ASSERT_EQ("a  b  c  d", alignString({"a", "b", "c", "d"}, 10));
+  ASSERT_EQ("a   b  c  d", alignString({"a", "b", "c", "d"}, 11));
+}

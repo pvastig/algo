@@ -34,7 +34,7 @@ int countOnes(std::vector<int> const& v, int value) {
 }
 bool deleteValues(std::vector<int>& v, int value) {
   size_t const beforeDeleting = v.size();
-  auto n                = v.begin();
+  auto n                      = v.begin();
   for (; n != v.end(); ++n) {
     if (*n == value)
       break;
@@ -69,6 +69,7 @@ std::string generateBraces(int pairs, char openedBr, char closedBr) {
   return generate("", 0, 0, pairs);
 }
 
+// TODO: correct the function, write tests
 bool checkAnagrams(const std::string& str) {
   std::set<char> s;
   for (auto const ch : str)
@@ -76,7 +77,7 @@ bool checkAnagrams(const std::string& str) {
       return false;
   return true;
 }
-
+// TODO: correct the function, write tests
 std::vector<int> mergeArrays(const std::vector<std::vector<int> >& v) {
   size_t elements = 0;
   for (auto const& item : v)
@@ -117,4 +118,33 @@ std::vector<int> mergeArrays(const std::vector<std::vector<int> >& v) {
   }
 }
 
+std::string alignString(std::vector<std::string> const& words, size_t length) {
+  if (words.empty())
+    return std::string();
+
+  size_t totalLen = 0;
+  for (auto const& word : words)
+    totalLen += word.size();
+
+  if (length < totalLen)
+    return std::string();
+
+  auto addSpace = [](size_t count) {
+    std::string space;
+    for (size_t j = 0; j < count; ++j)
+      space += ' ';
+    return space;
+  };
+  size_t const totalSpace = length - totalLen;
+  size_t const countWords = words.size() > 1 ? words.size() - 1 : 1u;
+  size_t const countSpace = totalSpace / countWords;
+  std::string s = words[0] + addSpace(countSpace + totalSpace % countWords);
+  if (words.size() > 1) {
+    for (size_t i = 1; i < countWords; ++i) {
+      s += words[i] + addSpace(countSpace);
+    }
+    s += words.back();
+  }
+  return s;
+}
 }  // namespace Algo
