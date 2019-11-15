@@ -3,7 +3,7 @@
  \authors Astigeevich Pavel
  \warning Uses only for studying
  \brief The file contains different algorithms. Algorithms are taken from real
-task, from interview, books, exclusively for self-study
+tasks, interview, books, exclusively for self-study
 */
 
 #pragma once
@@ -63,5 +63,11 @@ bool checkAnagrams(std::string const& str);
 */
 std::vector<int> mergeArrays(std::vector<std::vector<int>> const& v);
 
+/*!
+ \brief Aligns given words by spaces
+ \param words Array of words without spaces
+ \param length Length of a future string
+ \return Aligned string
+*/
 std::string alignString(std::vector<std::string> const& words, size_t length);
 }  // namespace Algo
