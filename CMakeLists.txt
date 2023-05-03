@@ -1,20 +1,36 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.24)
 
-set(PROJECT algo)
-project(${PROJECT})
+project(algo)
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY
+    ${PROJECT_BINARY_DIR}/bin
+    CACHE PATH
+    "Single Directory for all"
+    )
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
+    ${PROJECT_BINARY_DIR}/bin
+    CACHE PATH
+    "Single Directory for all"
+    )
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY
+    ${PROJECT_BINARY_DIR}/lib
+    CACHE PATH
+    "Single Directory for all"
+    )
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-find_package(Threads REQUIRED)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-file(GLOB AUTO_SOURCES "src/*.cpp" "src/*.h")
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /await")
+endif()
 
-add_executable(${PROJECT} ${AUTO_SOURCES})
-target_link_libraries(${PROJECT} Threads::Threads)
+include_directories(src)
 
-#if(MSVC)
-#  target_compile_options(${PROJECT} PRIVATE /W4 /WX)
-#else()
-#  target_compile_options(${PROJECT} PRIVATE -Wall -Wextra -pedantic -Werror)
-#endif()
+enable_testing()
+
+add_subdirectory(src)
+add_subdirectory(tests)
