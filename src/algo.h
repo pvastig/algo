@@ -2,8 +2,7 @@
  \file
  \authors Astigeevich Pavel
  \warning Uses only for studying
- \brief The file contains different algorithms. Algorithms are taken from real
-tasks, interview, books, exclusively for self-study
+ \brief The file contains different algorithms. Algorithms are taken from real tasks, interview, books, exclusively for self-study
 */
 
 #pragma once
@@ -22,14 +21,14 @@ namespace Algo {
 int countMatchedSymbols(std::string const& str, std::string const& pattern);
 
 /*!
- \brief Counts one by one digit in the given array
+ \brief Counts one by one digit in a given array
  \details for example: for set {101010} and value 1 the function returns 1
  \details {111551} and value 5 returns 2
- \param v Array of 0 and 1
- \param value Value that are going to be counted, by default 1
- \return Count of valued digit
+ \param v Array of digits
+ \param value Value that is going to be counted, by default 1
+ \return Count of digit
 */
-int countOnes(std::vector<int> const& v, int value = 1);
+int countDigitsOneByOne(std::vector<int> const& v, int value = 1);
 
 /*!
  \brief Deletes wanted value in array
@@ -70,4 +69,11 @@ std::vector<int> mergeArrays(std::vector<std::vector<int>> const& v);
  \return Aligned string
 */
 std::string alignString(std::vector<std::string> const& words, size_t length);
+
+bool isPalindrome(const std::string& str);
+
+int binarySearch(const std::vector<int>& v, int value);
+
+int myAtoi(const char* str);
+
 }  // namespace Algo
