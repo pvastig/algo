@@ -84,7 +84,7 @@ std::string generate(std::string s, int l, int r, int pairs)
 {
 	if (l == pairs && r == pairs)
 	{
-		return s += '\n';
+		std::cout << s << '\n';
 	}
 
 	if (l < pairs)
@@ -285,6 +285,41 @@ int myAtoi(const char* str)
 	}
 
 	return res;
+}
+
+///
+/// является ли перестановкой букв
+/// bbac <-> babc - true
+/// abbc <-> abac - false
+///
+///
+
+bool isEqualString(const std::string& str1, const std::string& str2)
+{
+	int A[255] = { 0 };
+
+	for (const auto ch : str1)
+	{
+		++A[ch];
+	}
+
+	// [b] = 2
+	// [a] = 1
+	// [c] = 1
+
+
+	for (const char ch : str2)
+	{
+		--A[ch];
+	}
+
+	for (int item : A)
+	{
+		if (item != 0)
+			return false;
+	}
+
+	return true;
 }
 
 }  // namespace Algo
